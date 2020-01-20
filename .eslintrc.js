@@ -3,7 +3,10 @@ module.exports = {
   parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: {
+      legacyDecorators: true
+    }
   },
   plugins: [
     'ember'
@@ -18,8 +21,10 @@ module.exports = {
   },
   rules: {
     'ember/no-jquery': 'error',
-    'ember/require-return-from-computed': 'off',
-    'ember/no-arrow-function-computed-properties': 'off'
+
+    'ember/no-arrow-function-computed-properties': ['error', {
+      onlyThisContexts: true
+    }]
   },
   overrides: [
     // node files
